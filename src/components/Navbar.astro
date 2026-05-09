@@ -1,0 +1,138 @@
+---
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/projects", label: "Projects" },
+];
+
+function isActive(href: string) {
+  if (href === "/") return currentPath === "/" || currentPath === "";
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="sticky top-0 z-50">
+  <div
+    class="relative z-[70] border-b border-[rgba(0,240,255,0.12)] bg-[#080810]/90 backdrop-blur-md"
+  >
+    <div
+      class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between min-h-[4rem]"
+    >
+    <a
+      href="/"
+      class="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-wider text-[#00f0ff] transition-interactive hover:text-[#7afcff] min-h-[44px] min-w-[44px] inline-flex items-center justify-start"
+      aria-label="Artem Belozertsev home"
+    >
+      AB
+    </a>
+
+    <nav class="hidden md:flex items-center gap-1" aria-label="Primary">
+      {
+        links.map(({ href, label }) => (
+          <a
+            href={href}
+            class:list={[
+              "inline-flex items-center justify-center min-h-[44px] px-4 rounded-md text-sm font-medium transition-interactive",
+              isActive(href)
+                ? "text-[#00f0ff] bg-[rgba(0,240,255,0.08)]"
+                : "text-[#e8e8f0] hover:text-[#00f0ff]",
+            ]}
+            aria-current={isActive(href) ? "page" : undefined}
+          >
+            {label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <button
+      type="button"
+      class="md:hidden inline-flex items-center justify-center min-h-[44px] min-w-[44px] rounded-md border border-[rgba(0,240,255,0.25)] text-[#00f0ff] transition-interactive hover:shadow-glow-cyan hover:bg-[rgba(0,240,255,0.06)]"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      id="nav-menu-button"
+      aria-label="Open menu"
+    >
+      <span class="sr-only">Open menu</span>
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="fixed inset-0 z-[60] hidden md:hidden bg-[#080810]/98 backdrop-blur-lg pt-16"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Mobile navigation"
+  >
+    <div class="flex flex-col pt-6 px-4 gap-2 max-w-6xl mx-auto">
+      {
+        links.map(({ href, label }) => (
+          <a
+            href={href}
+            class:list={[
+              "flex items-center min-h-[48px] px-4 rounded-lg text-base font-medium transition-interactive border border-transparent",
+              isActive(href)
+                ? "text-[#00f0ff] border-[rgba(0,240,255,0.25)] bg-[rgba(0,240,255,0.06)] shadow-glow-cyan"
+                : "text-[#e8e8f0] hover:border-[rgba(0,240,255,0.2)]",
+            ]}
+            aria-current={isActive(href) ? "page" : undefined}
+            data-mobile-nav-link
+          >
+            {label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</header>
+
+<script>
+  const button = document.getElementById("nav-menu-button");
+  const panel = document.getElementById("mobile-menu");
+  const mq = window.matchMedia("(min-width: 768px)");
+
+  function setOpen(open) {
+    if (!button || !panel) return;
+    panel.classList.toggle("hidden", !open);
+    button.setAttribute("aria-expanded", open ? "true" : "false");
+    button.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    document.body.classList.toggle("overflow-hidden", open);
+  }
+
+  button?.addEventListener("click", () => {
+    const open = button.getAttribute("aria-expanded") === "true";
+    setOpen(!open);
+  });
+
+  panel?.querySelectorAll("[data-mobile-nav-link]").forEach((link) => {
+    link.addEventListener("click", () => setOpen(false));
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setOpen(false);
+  });
+
+  mq.addEventListener("change", () => {
+    if (mq.matches) setOpen(false);
+  });
+</script>

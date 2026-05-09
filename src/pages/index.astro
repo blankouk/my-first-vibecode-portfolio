@@ -1,0 +1,121 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NewsletterForm from "../components/NewsletterForm.astro";
+---
+
+<Layout
+  title="Artem Belozertsev — Home"
+  description="[PLACEHOLDER] Finance student, quant enthusiast, builder."
+>
+  <section class="mb-16 md:mb-24" aria-labelledby="hero-heading">
+    <h1
+      id="hero-heading"
+      class="font-[family-name:var(--font-display)] text-hero font-semibold text-[#e8e8f0] text-center tracking-tight mb-8"
+    >
+      Artem Belozertsev
+    </h1>
+    <div class="max-w-2xl mx-auto text-left space-y-6">
+      <p
+        class="text-lg md:text-xl text-[#00f0ff] font-medium font-[family-name:var(--font-body)]"
+      >
+        Finance Student. Quant Enthusiast. Builder.
+      </p>
+      <p class="text-[#7a7a9a] leading-relaxed">
+        [Short bio placeholder — who you are, what you're about, what you're
+        building]
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 pt-2">
+        <a
+          href="/projects"
+          class="inline-flex items-center justify-center min-h-[44px] px-8 rounded-lg bg-[#00f0ff] text-[#080810] font-semibold text-sm transition-interactive hover:shadow-glow-cyan-hover text-center"
+        >
+          View Projects
+        </a>
+        <a
+          href="/about"
+          class="inline-flex items-center justify-center min-h-[44px] px-8 rounded-lg border border-[#00f0ff] text-[#00f0ff] font-semibold text-sm transition-interactive hover:bg-[rgba(0,240,255,0.08)] text-center"
+        >
+          About Me
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-16 md:mb-24" aria-labelledby="working-heading">
+    <h2
+      id="working-heading"
+      class="font-[family-name:var(--font-display)] text-2xl md:text-3xl text-[#e8e8f0] mb-8"
+    >
+      What I'm Working On
+    </h2>
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <article
+        class="rounded-xl border border-[rgba(0,240,255,0.15)] bg-[#0f0f1a] p-6 shadow-glow-cyan transition-interactive hover:shadow-glow-cyan-hover"
+      >
+        <h3
+          class="font-[family-name:var(--font-display)] text-2xl text-[#e8e8f0] mb-3"
+        >
+          [PLACEHOLDER] Focus Alpha
+        </h3>
+        <p class="text-[#7a7a9a] text-sm leading-relaxed mb-4">
+          [PLACEHOLDER] One sentence on a current project or research thread.
+        </p>
+        <a
+          href="/projects"
+          class="text-[#00f0ff] text-sm font-semibold transition-interactive hover:text-[#7afcff] inline-flex items-center min-h-[44px]"
+        >
+          Learn more →
+        </a>
+      </article>
+      <article
+        class="rounded-xl border border-[rgba(0,240,255,0.15)] bg-[#0f0f1a] p-6 shadow-glow-cyan transition-interactive hover:shadow-glow-cyan-hover"
+      >
+        <h3
+          class="font-[family-name:var(--font-display)] text-2xl text-[#e8e8f0] mb-3"
+        >
+          [PLACEHOLDER] Focus Beta
+        </h3>
+        <p class="text-[#7a7a9a] text-sm leading-relaxed mb-4">
+          [PLACEHOLDER] One sentence on markets, models, or a build in progress.
+        </p>
+        <a
+          href="/projects"
+          class="text-[#00f0ff] text-sm font-semibold transition-interactive hover:text-[#7afcff] inline-flex items-center min-h-[44px]"
+        >
+          Learn more →
+        </a>
+      </article>
+      <article
+        class="rounded-xl border border-[rgba(0,240,255,0.15)] bg-[#0f0f1a] p-6 shadow-glow-cyan transition-interactive hover:shadow-glow-cyan-hover md:col-span-2 lg:col-span-1"
+      >
+        <h3
+          class="font-[family-name:var(--font-display)] text-2xl text-[#e8e8f0] mb-3"
+        >
+          [PLACEHOLDER] Focus Gamma
+        </h3>
+        <p class="text-[#7a7a9a] text-sm leading-relaxed mb-4">
+          [PLACEHOLDER] One sentence on fintech, data, or entrepreneurship angle.
+        </p>
+        <a
+          href="/projects"
+          class="text-[#00f0ff] text-sm font-semibold transition-interactive hover:text-[#7afcff] inline-flex items-center min-h-[44px]"
+        >
+          Learn more →
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <section class="pb-4" aria-labelledby="newsletter-heading">
+    <h2
+      id="newsletter-heading"
+      class="font-[family-name:var(--font-display)] text-2xl md:text-3xl text-[#e8e8f0] mb-4"
+    >
+      Weekly Newsletter
+    </h2>
+    <p class="text-[#7a7a9a] max-w-xl mb-8 leading-relaxed">
+      [Placeholder: what the newsletter covers]
+    </p>
+    <NewsletterForm />
+  </section>
+</Layout>

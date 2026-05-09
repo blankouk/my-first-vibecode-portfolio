@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+---
+
+<Layout
+  title="Projects — Artem Belozertsev"
+  description="[PLACEHOLDER] Selected projects and builds."
+>
+  <h1
+    class="font-[family-name:var(--font-display)] text-hero font-semibold text-[#e8e8f0] mb-8"
+  >
+    Projects
+  </h1>
+  <p class="text-[#7a7a9a] leading-relaxed max-w-3xl mb-12 md:mb-14">
+    [Placeholder: a brief note about the types of projects you work on]
+  </p>
+
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+    role="list"
+  >
+    <div role="listitem">
+      <ProjectCard
+        title="[PLACEHOLDER] Project Neptune"
+        description="[PLACEHOLDER] One sentence describing the problem, approach, or outcome."
+        tag="Fintech"
+        href="#"
+      />
+    </div>
+    <div role="listitem">
+      <ProjectCard
+        title="[PLACEHOLDER] Project Lattice"
+        description="[PLACEHOLDER] One sentence on data, models, or analysis scope."
+        tag="Data Science"
+        href="#"
+      />
+    </div>
+    <div role="listitem">
+      <ProjectCard
+        title="[PLACEHOLDER] Project Vector"
+        description="[PLACEHOLDER] One sentence on venture, product, or market experiment."
+        tag="Entrepreneurship"
+        href="#"
+      />
+    </div>
+  </div>
+</Layout>

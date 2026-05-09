@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyber-bg: #080810;
+  --color-cyber-surface: #0f0f1a;
+  --color-cyber-cyan: #00f0ff;
+  --color-cyber-violet: #9b5de5;
+  --color-cyber-text: #e8e8f0;
+  --color-cyber-muted: #7a7a9a;
+  --font-display: "Orbitron", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#080810] text-[#e8e8f0] antialiased;
+    font-family: var(--font-body);
+    background-image:
+      linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+      radial-gradient(
+        ellipse 80% 50% at 50% -20%,
+        rgba(0, 240, 255, 0.06),
+        transparent
+      );
+    background-size:
+      32px 32px,
+      32px 32px,
+      100% 100%;
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-[#00f0ff];
+  }
+}
+
+@utility text-hero {
+  font-size: clamp(2rem, 5vw + 1rem, 4rem);
+  line-height: 1.1;
+}
+
+@utility transition-interactive {
+  transition-property: color, background-color, border-color, box-shadow, transform,
+    opacity;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
+
+@utility shadow-glow-cyan {
+  box-shadow:
+    0 0 0 1px rgba(0, 240, 255, 0.15),
+    0 0 24px -8px rgba(0, 240, 255, 0.35);
+}
+
+@utility shadow-glow-cyan-hover {
+  box-shadow:
+    0 0 0 1px rgba(0, 240, 255, 0.35),
+    0 0 32px -6px rgba(0, 240, 255, 0.5);
+}

@@ -1,0 +1,27 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer
+  class="mt-auto border-t border-[rgba(0,240,255,0.12)] bg-[#0f0f1a]/80"
+  role="contentinfo"
+>
+  <div
+    class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row gap-6 sm:items-center sm:justify-between"
+  >
+    <p class="text-sm text-[#7a7a9a]">
+      <span class="text-[#e8e8f0] font-medium">Artem Belozertsev</span>
+      · © {year} · [PLACEHOLDER]
+    </p>
+    <div class="flex flex-wrap gap-4">
+      <a
+        href="#"
+        class="text-sm text-[#7a7a9a] hover:text-[#00f0ff] transition-interactive min-h-[44px] inline-flex items-center"
+        >LinkedIn</a>
+      <a
+        href="#"
+        class="text-sm text-[#7a7a9a] hover:text-[#00f0ff] transition-interactive min-h-[44px] inline-flex items-center"
+        >GitHub</a>
+    </div>
+  </div>
+</footer>

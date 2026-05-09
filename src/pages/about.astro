@@ -1,0 +1,129 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="About — Artem Belozertsev"
+  description="[PLACEHOLDER] Background, interests, and contact."
+>
+  <h1
+    class="font-[family-name:var(--font-display)] text-hero font-semibold text-[#e8e8f0] mb-12"
+  >
+    About
+  </h1>
+
+  <div class="space-y-16">
+    <section aria-labelledby="about-intro-heading">
+      <h2
+        id="about-intro-heading"
+        class="font-[family-name:var(--font-display)] text-2xl text-[#e8e8f0] mb-6"
+      >
+        Intro
+      </h2>
+      <div
+        class="flex flex-col lg:flex-row gap-10 lg:gap-14 items-start"
+      >
+        <div
+          class="shrink-0 w-[300px] h-[300px] rounded-xl border border-[rgba(0,240,255,0.15)] bg-[#1a1a24] shadow-glow-cyan overflow-hidden"
+        >
+          <img
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Crect fill='%232a2a36' width='300' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%237a7a9a' font-family='system-ui' font-size='14'%3EPhoto%3C/text%3E%3C/svg%3E"
+            alt="[PLACEHOLDER] Profile photo — grey placeholder box 300 by 300 pixels"
+            width="300"
+            height="300"
+            loading="lazy"
+            class="w-full h-full object-cover opacity-90"
+          />
+        </div>
+        <p class="text-[#7a7a9a] leading-relaxed max-w-2xl">
+          [PLACEHOLDER] Short bio paragraph — who you are, what you study at the
+          University of Exeter, and what you care about in quant finance and
+          building.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="about-background-heading">
+      <h2
+        id="about-background-heading"
+        class="font-[family-name:var(--font-display)] text-2xl text-[#e8e8f0] mb-6"
+      >
+        Background
+      </h2>
+      <p class="text-[#7a7a9a] leading-relaxed max-w-2xl">
+        [PLACEHOLDER] Education and journey — milestones, coursework, internships,
+        or self-directed learning in finance and mathematics.
+      </p>
+    </section>
+
+    <section aria-labelledby="about-skills-heading">
+      <h2
+        id="about-skills-heading"
+        class="font-[family-name:var(--font-display)] text-2xl text-[#e8e8f0] mb-6"
+      >
+        Interests &amp; Skills
+      </h2>
+      <ul class="flex flex-wrap gap-3 max-w-3xl" role="list">
+        {
+          [
+            "Quantitative Finance",
+            "Python",
+            "Financial Modelling",
+            "Trading",
+            "Entrepreneurship",
+            "Data Science",
+          ].map((label) => (
+            <li>
+              <span
+                class="inline-flex items-center min-h-[44px] px-4 rounded-lg border border-[rgba(0,240,255,0.2)] bg-[#0f0f1a] text-sm text-[#e8e8f0] shadow-glow-cyan transition-interactive hover:border-[rgba(0,240,255,0.35)]"
+              >
+                {label}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section aria-labelledby="about-reading-heading">
+      <h2
+        id="about-reading-heading"
+        class="font-[family-name:var(--font-display)] text-2xl text-[#e8e8f0] mb-6"
+      >
+        Currently Reading / Learning
+      </h2>
+      <ul
+        class="list-disc list-inside text-[#7a7a9a] space-y-3 max-w-2xl marker:text-[#00f0ff]"
+        role="list"
+      >
+        <li>[PLACEHOLDER] Book, course, or paper title one</li>
+        <li>[PLACEHOLDER] Book, course, or paper title two</li>
+        <li>[PLACEHOLDER] Book, course, or paper title three</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="about-contact-heading">
+      <h2
+        id="about-contact-heading"
+        class="font-[family-name:var(--font-display)] text-2xl text-[#e8e8f0] mb-6"
+      >
+        Get In Touch
+      </h2>
+      <p class="text-[#7a7a9a] mb-4 max-w-2xl">
+        [PLACEHOLDER] Prefer email or LinkedIn — links below are placeholders.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href="#"
+          class="inline-flex items-center min-h-[44px] text-[#00f0ff] font-medium transition-interactive hover:text-[#7afcff]"
+          >Email (placeholder)</a
+        >
+        <a
+          href="#"
+          class="inline-flex items-center min-h-[44px] text-[#00f0ff] font-medium transition-interactive hover:text-[#7afcff]"
+          >LinkedIn (placeholder)</a
+        >
+      </div>
+    </section>
+  </div>
+</Layout>

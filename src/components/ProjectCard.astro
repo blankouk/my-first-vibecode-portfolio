@@ -1,0 +1,34 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  tag: string;
+  href?: string;
+}
+
+const { title, description, tag, href = "#" } = Astro.props;
+---
+
+<article
+  class="group rounded-xl border border-[rgba(0,240,255,0.15)] bg-[#0f0f1a] p-6 shadow-glow-cyan transition-interactive hover:shadow-glow-cyan-hover hover:-translate-y-0.5 flex flex-col h-full"
+>
+  <p
+    class="text-xs font-medium uppercase tracking-widest text-[#9b5de5] mb-3"
+  >
+    {tag}
+  </p>
+  <h2
+    class="font-[family-name:var(--font-display)] text-2xl text-[#e8e8f0] mb-3"
+  >
+    {title}
+  </h2>
+  <p class="text-[#7a7a9a] text-sm leading-relaxed flex-1 mb-6">
+    {description}
+  </p>
+  <a
+    href={href}
+    class="inline-flex items-center justify-center min-h-[44px] px-5 rounded-lg border border-[#00f0ff] text-[#00f0ff] text-sm font-semibold transition-interactive hover:bg-[rgba(0,240,255,0.1)] w-full sm:w-auto self-start"
+  >
+    View Project →
+  </a>
+</article>
