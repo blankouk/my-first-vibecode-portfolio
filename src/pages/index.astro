@@ -5,7 +5,7 @@ import NewsletterForm from "../components/NewsletterForm.astro";
 
 <Layout
   title="Artem Belozertsev — Home"
-  description="[PLACEHOLDER] Finance student, quant enthusiast, builder."
+  description="[PLACEHOLDER] Mathematics and Finance student, quant enthusiast, builder."
 >
   <section class="mb-16 md:mb-24" aria-labelledby="hero-heading">
     <h1
@@ -14,30 +14,43 @@ import NewsletterForm from "../components/NewsletterForm.astro";
     >
       Artem Belozertsev
     </h1>
-    <div class="max-w-2xl mx-auto text-left space-y-6">
-      <p
-        class="text-lg md:text-xl text-[#00f0ff] font-medium font-[family-name:var(--font-body)]"
-      >
-        Finance Student. Quant Enthusiast. Builder.
-      </p>
-      <p class="text-[#7a7a9a] leading-relaxed">
-        I'm Artem, a first-year BSc Mathematics and Statistics with Finance student at the University of Exeter.
-        Originally from Russia, I'm passionate about quantitative finance, financial markets, and the intersection of data science with trading.
-        Outside academics, interested in investments, also trying to create content online, and stay active through basketball, fitness, and running.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 pt-2">
-        <a
-          href="/projects"
-          class="inline-flex items-center justify-center min-h-[44px] px-8 rounded-lg bg-[#00f0ff] text-[#080810] font-semibold text-sm transition-interactive hover:shadow-glow-cyan-hover text-center"
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-start gap-10 md:gap-14">
+      <div class="shrink-0 w-[220px] h-[220px] md:w-[260px] md:h-[260px] rounded-xl border border-[rgba(0,240,255,0.15)] bg-[#1a1a24] shadow-glow-cyan overflow-hidden mx-auto md:mx-0">
+        <img
+          src="/profile_image.jpg"
+          width="260"
+          height="260"
+          loading="eager"
+          alt="Portrait of Artem Belozertsev"
+          class="w-full h-full object-cover opacity-90"
+        />
+      </div>
+
+      <div class="max-w-2xl text-left space-y-6">
+        <p
+          class="text-lg md:text-xl text-[#00f0ff] font-medium font-[family-name:var(--font-body)]"
         >
-          View Projects
-        </a>
-        <a
-          href="/about"
-          class="inline-flex items-center justify-center min-h-[44px] px-8 rounded-lg border border-[#00f0ff] text-[#00f0ff] font-semibold text-sm transition-interactive hover:bg-[rgba(0,240,255,0.08)] text-center"
-        >
-          About Me
-        </a>
+          Mathematics and Finance student, quant enthusiast, builder.
+        </p>
+        <p class="text-[#7a7a9a] leading-relaxed">
+          I'm Artem, a first-year BSc Mathematics and Statistics with Finance student at the University of Exeter.
+          Originally from Russia, I'm passionate about quantitative finance, financial markets, and the intersection of data science with trading.
+          Outside academics, interested in investments, also trying to create content online, and stay active through basketball, fitness, and running.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+          <a
+            href="/projects"
+            class="inline-flex items-center justify-center min-h-[44px] px-8 rounded-lg bg-[#00f0ff] text-[#080810] font-semibold text-sm transition-interactive hover:shadow-glow-cyan-hover text-center"
+          >
+            View Projects
+          </a>
+          <a
+            href="/about"
+            class="inline-flex items-center justify-center min-h-[44px] px-8 rounded-lg border border-[#00f0ff] text-[#00f0ff] font-semibold text-sm transition-interactive hover:bg-[rgba(0,240,255,0.08)] text-center"
+          >
+            About Me
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -56,7 +69,7 @@ import NewsletterForm from "../components/NewsletterForm.astro";
         <h3
           class="font-[family-name:var(--font-display)] text-2xl text-[#e8e8f0] mb-3"
         >
-          [PLACEHOLDER] Focus Alpha
+          Styduing foundational mathematics and statistics. Focus Alpha
         </h3>
         <p class="text-[#7a7a9a] text-sm leading-relaxed mb-4">
           [PLACEHOLDER] One sentence on a current project or research thread.
