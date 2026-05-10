@@ -19,6 +19,8 @@
   body {
     @apply bg-[#080810] text-[#e8e8f0] antialiased;
     font-family: var(--font-body);
+    --glow-x: 50%;
+    --glow-y: 50%;
     background-image:
       linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px),
@@ -68,4 +70,221 @@
   box-shadow:
     0 0 0 1px rgba(0, 240, 255, 0.35),
     0 0 32px -6px rgba(0, 240, 255, 0.5);
+}
+
+/* Fixed layer: soft cyan spotlight that follows the cursor (driven by --glow-x / --glow-y on body) */
+#cursor-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(
+    420px circle at var(--glow-x) var(--glow-y),
+    rgba(0, 240, 255, 0.11),
+    rgba(155, 93, 229, 0.04) 35%,
+    transparent 65%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #cursor-glow {
+    background: radial-gradient(
+      520px circle at 50% 35%,
+      rgba(0, 240, 255, 0.06),
+      transparent 60%
+    );
+  }
+}
+
+/* Scattered background glyphs (rose–magenta); parallax via --px / --py from JS */
+.bg-decor {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bg-decor__node {
+  position: absolute;
+  left: var(--lx);
+  top: var(--ly);
+  --py: 0px;
+  --px: 0px;
+  transform: translate(-50%, -50%) translate(var(--px), var(--py)) rotate(var(--rot))
+    scale(var(--s));
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.bg-decor__glyph {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-size: var(--gf, clamp(0.75rem, 2.1vw, 1.2rem));
+  background: linear-gradient(
+    155deg,
+    #fecdd3 0%,
+    #fb7185 26%,
+    #f472b6 52%,
+    #e879f9 78%,
+    #fda4af 100%
+  );
+  background-size: 130% 170%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0.38;
+  filter: drop-shadow(0 0 12px rgba(244, 114, 182, 0.28));
+  animation: bg-decor-drift var(--drift, 14s) ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes bg-decor-drift {
+  0%,
+  100% {
+    opacity: 0.28;
+    transform: translateY(0) rotate(-4deg);
+  }
+  50% {
+    opacity: 0.48;
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-decor__glyph {
+    animation: none;
+    opacity: 0.34;
+    transform: none;
+  }
+}
+
+/* About portrait: gentle bob; inner tilt is applied via JS on [data-floating-portrait] */
+@keyframes portrait-float {
+  0%,
+  100% {
+    transform: translateY(0) translateZ(0);
+  }
+  50% {
+    transform: translateY(-14px) translateZ(0);
+  }
+}
+
+.floating-portrait-outer {
+  animation: portrait-float 7s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-portrait-outer {
+    animation: none;
+  }
+}
+
+[data-floating-portrait] {
+  transform-style: preserve-3d;
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease;
+  transform: perspective(1000px) translate3d(
+      var(--shift-x, 0px),
+      var(--shift-y, 0px),
+      var(--lift, 0px)
+    )
+    rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+}
+
+[data-floating-portrait] .floating-portrait-frame {
+  transition: box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+[data-floating-portrait]:is(:hover, :focus-within) .floating-portrait-frame {
+  box-shadow:
+    0 0 0 1px rgba(0, 240, 255, 0.32),
+    0 0 48px -4px rgba(0, 240, 255, 0.5),
+    0 0 80px -20px rgba(155, 93, 229, 0.2),
+    0 32px 56px -28px rgba(0, 0, 0, 0.65);
+  border-color: rgba(0, 240, 255, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-floating-portrait] {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Home: "What I'm Working On" — gradient shimmer + glow on headings */
+.working-on-section {
+  --working-shimmer: linear-gradient(
+    105deg,
+    #e8e8f0 0%,
+    #7afcff 25%,
+    #00f0ff 40%,
+    #c4a3ff 58%,
+    #e8e8f0 72%,
+    #a8f4ff 88%,
+    #e8e8f0 100%
+  );
+}
+
+.working-on-section .working-on-title {
+  background-image: var(--working-shimmer);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: working-on-shimmer 10s linear infinite;
+  filter: drop-shadow(0 0 24px rgba(0, 240, 255, 0.22))
+    drop-shadow(0 0 48px rgba(155, 93, 229, 0.12));
+}
+
+.working-on-section .working-on-card-title {
+  background-image: linear-gradient(
+    120deg,
+    #f0f0f8 0%,
+    #b8f8ff 35%,
+    #e8e8f0 55%,
+    #d4c4ff 80%,
+    #e8e8f0 100%
+  );
+  background-size: 160% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: working-on-shimmer-subtle 14s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 14px rgba(0, 240, 255, 0.12));
+}
+
+@keyframes working-on-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 220% 50%;
+  }
+}
+
+@keyframes working-on-shimmer-subtle {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .working-on-section .working-on-title,
+  .working-on-section .working-on-card-title {
+    animation: none;
+    background-image: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    color: #e8e8f0;
+    filter: none;
+  }
 }

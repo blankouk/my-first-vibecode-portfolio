@@ -1,0 +1,77 @@
+---
+/**
+ * Chaotic background glyphs (finance / maths / CS) with scroll parallax + drift.
+ * Positions are fixed in viewport % so they stay atmospheric; parallax sells depth on scroll.
+ */
+type Glyph = {
+  g: string;
+  lx: number;
+  ly: number;
+  rot: number;
+  scale: number;
+  /** Vertical parallax factor (scrollY * p). */
+  p: number;
+  /** Optional horizontal parallax (signed). */
+  ph?: number;
+  drift: string;
+  delay: string;
+  fs?: string;
+};
+
+const glyphs: Glyph[] = [
+  { g: "$", lx: 6, ly: 11, rot: -16, scale: 1.2, p: 0.11, ph: 0.02, drift: "13s", delay: "0s" },
+  { g: "∑", lx: 91, ly: 18, rot: 22, scale: 0.85, p: 0.18, ph: -0.03, drift: "15s", delay: "0.4s" },
+  { g: "π", lx: 14, ly: 38, rot: 8, scale: 1.35, p: 0.14, ph: 0.025, drift: "11s", delay: "1.1s", fs: "1.05em" },
+  { g: "</>", lx: 86, ly: 44, rot: -10, scale: 1.0, p: 0.2, ph: -0.02, drift: "14s", delay: "0.2s" },
+  { g: "€", lx: 3, ly: 62, rot: 14, scale: 0.95, p: 0.09, ph: 0.015, drift: "16s", delay: "0.8s" },
+  { g: "∫", lx: 94, ly: 68, rot: -19, scale: 1.15, p: 0.16, ph: 0.04, drift: "12s", delay: "0.5s" },
+  { g: "{ }", lx: 11, ly: 78, rot: -7, scale: 0.88, p: 0.12, ph: -0.018, drift: "17s", delay: "0s" },
+  { g: "∞", lx: 89, ly: 86, rot: 11, scale: 1.1, p: 0.1, ph: 0.022, drift: "13s", delay: "1.4s" },
+  { g: "λ", lx: 22, ly: 7, rot: 19, scale: 0.9, p: 0.15, ph: -0.025, drift: "14s", delay: "0.6s" },
+  { g: "01", lx: 77, ly: 31, rot: -14, scale: 0.82, p: 0.17, ph: 0.035, drift: "15s", delay: "0.3s" },
+  { g: "∂", lx: 5, ly: 48, rot: 6, scale: 1.05, p: 0.08, ph: 0.01, drift: "18s", delay: "1s" },
+  { g: "→", lx: 96, ly: 52, rot: -22, scale: 1.25, p: 0.19, ph: -0.04, drift: "11s", delay: "0.7s" },
+  { g: "£", lx: 18, ly: 58, rot: -11, scale: 0.92, p: 0.13, ph: 0.028, drift: "16s", delay: "0.1s" },
+  { g: "::", lx: 84, ly: 9, rot: 25, scale: 0.78, p: 0.14, ph: -0.015, drift: "12s", delay: "1.2s" },
+  { g: "σ", lx: 52, ly: 14, rot: -9, scale: 0.98, p: 0.21, ph: 0.05, drift: "14s", delay: "0.9s" },
+  { g: "#", lx: 33, ly: 22, rot: 17, scale: 1.08, p: 0.16, ph: -0.032, drift: "13s", delay: "0s" },
+  { g: "√", lx: 68, ly: 26, rot: -13, scale: 1.12, p: 0.12, ph: 0.02, drift: "15s", delay: "0.5s" },
+  { g: "&&", lx: 41, ly: 41, rot: -20, scale: 0.86, p: 0.22, ph: 0.045, drift: "11s", delay: "1.3s" },
+  { g: "Δ", lx: 59, ly: 36, rot: 12, scale: 1.18, p: 0.18, ph: -0.038, drift: "16s", delay: "0.4s" },
+  { g: "%", lx: 8, ly: 92, rot: 9, scale: 0.94, p: 0.07, ph: 0.012, drift: "17s", delay: "0.8s" },
+  { g: "[]", lx: 92, ly: 93, rot: -15, scale: 0.8, p: 0.11, ph: -0.02, drift: "14s", delay: "0.2s" },
+  { g: "¥", lx: 27, ly: 69, rot: 21, scale: 0.91, p: 0.14, ph: 0.03, drift: "12s", delay: "1s" },
+  { g: "∇", lx: 73, ly: 74, rot: -8, scale: 1.02, p: 0.15, ph: -0.022, drift: "13s", delay: "0.6s" },
+  { g: "β", lx: 48, ly: 63, rot: 16, scale: 0.87, p: 0.2, ph: 0.04, drift: "15s", delay: "0s" },
+  { g: "≈", lx: 15, ly: 26, rot: -18, scale: 1.0, p: 0.1, ph: -0.01, drift: "18s", delay: "1.1s" },
+  { g: "+", lx: 81, ly: 41, rot: 7, scale: 1.28, p: 0.17, ph: 0.025, drift: "11s", delay: "0.3s" },
+  { g: "∮", lx: 36, ly: 83, rot: -24, scale: 0.93, p: 0.09, ph: 0.018, drift: "16s", delay: "0.7s" },
+  { g: "∀", lx: 64, ly: 88, rot: 13, scale: 0.96, p: 0.13, ph: -0.028, drift: "14s", delay: "0.5s" },
+  { g: "~", lx: 54, ly: 52, rot: -6, scale: 1.4, p: 0.23, ph: 0.055, drift: "12s", delay: "0.4s", fs: "1.15em" },
+  { g: ";", lx: 2, ly: 28, rot: 28, scale: 1.1, p: 0.06, ph: 0.008, drift: "19s", delay: "1.5s" },
+  { g: "*", lx: 97, ly: 36, rot: -11, scale: 1.06, p: 0.19, ph: -0.035, drift: "13s", delay: "0s" },
+];
+---
+
+<div class="bg-decor" aria-hidden="true" transition:persist="background-decor">
+  {
+    glyphs.map((item) => (
+      <div
+        class="bg-decor__node"
+        data-parallax={String(item.p)}
+        data-parallax-h={item.ph != null ? String(item.ph) : "0"}
+        style={{
+          "--lx": `${item.lx}%`,
+          "--ly": `${item.ly}%`,
+          "--rot": `${item.rot}deg`,
+          "--s": String(item.scale),
+          "--drift": item.drift,
+          "--d": item.delay,
+          ...(item.fs ? { "--gf": item.fs } : {}),
+        }}
+      >
+        <span class="bg-decor__glyph">{item.g}</span>
+      </div>
+    ))
+  }
+</div>

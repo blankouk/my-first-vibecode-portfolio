@@ -23,17 +23,21 @@ import Layout from "../layouts/Layout.astro";
       <div
         class="flex flex-col lg:flex-row gap-10 lg:gap-14 items-start"
       >
-        <div
-          class="shrink-0 w-[300px] h-[360px] rounded-xl border border-[rgba(0,240,255,0.15)] bg-[#1a1a24] shadow-glow-cyan overflow-hidden"
-        >
-          <img
-            src="/profile_image.jpg"
-            width="300"
-            height="360"
-            loading="lazy"
-            alt="Portrait of Artem Belozertsev"
-            class="w-full h-full object-cover object-[50%_35%] opacity-90"
-          />
+        <div class="floating-portrait-outer shrink-0 w-[300px] h-[360px]">
+          <div data-floating-portrait class="w-full h-full">
+            <div
+              class="floating-portrait-frame w-full h-full rounded-xl border border-[rgba(0,240,255,0.15)] bg-[#1a1a24] shadow-glow-cyan overflow-hidden"
+            >
+              <img
+                src="/profile_image.jpg"
+                width="300"
+                height="360"
+                loading="lazy"
+                alt="Portrait of Artem Belozertsev"
+                class="w-full h-full object-cover object-[50%_35%] opacity-90"
+              />
+            </div>
+          </div>
         </div>
         <p class="text-[#7a7a9a] leading-relaxed max-w-2xl">
           I'm Artem, a first-year BSc Finance with Mathematics student at the University of Exeter. 

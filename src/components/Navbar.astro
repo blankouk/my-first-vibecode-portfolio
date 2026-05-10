@@ -107,11 +107,9 @@ function isActive(href: string) {
 </header>
 
 <script>
-  const button = document.getElementById("nav-menu-button");
-  const panel = document.getElementById("mobile-menu");
-  const mq = window.matchMedia("(min-width: 768px)");
-
-  function setOpen(open) {
+  function setMobileNavOpen(open: boolean) {
+    const button = document.getElementById("nav-menu-button");
+    const panel = document.getElementById("mobile-menu");
     if (!button || !panel) return;
     panel.classList.toggle("hidden", !open);
     button.setAttribute("aria-expanded", open ? "true" : "false");
@@ -119,20 +117,35 @@ function isActive(href: string) {
     document.body.classList.toggle("overflow-hidden", open);
   }
 
-  button?.addEventListener("click", () => {
-    const open = button.getAttribute("aria-expanded") === "true";
-    setOpen(!open);
-  });
+  function setupMobileNav() {
+    const button = document.getElementById("nav-menu-button");
+    const panel = document.getElementById("mobile-menu");
+    if (!button || !panel) return;
+    if (button.dataset.mobileNavBound === "true") return;
+    button.dataset.mobileNavBound = "true";
 
-  panel?.querySelectorAll("[data-mobile-nav-link]").forEach((link) => {
-    link.addEventListener("click", () => setOpen(false));
-  });
+    button.addEventListener("click", () => {
+      const open = button.getAttribute("aria-expanded") === "true";
+      setMobileNavOpen(!open);
+    });
+
+    panel.querySelectorAll("[data-mobile-nav-link]").forEach((link) => {
+      link.addEventListener("click", () => setMobileNavOpen(false));
+    });
+  }
+
+  document.addEventListener("astro:page-load", setupMobileNav);
+  setupMobileNav();
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") setOpen(false);
+    if (e.key !== "Escape") return;
+    const panel = document.getElementById("mobile-menu");
+    if (!panel || panel.classList.contains("hidden")) return;
+    setMobileNavOpen(false);
   });
 
+  const mq = window.matchMedia("(min-width: 768px)");
   mq.addEventListener("change", () => {
-    if (mq.matches) setOpen(false);
+    if (mq.matches) setMobileNavOpen(false);
   });
 </script>
