@@ -6,10 +6,13 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "deploy:cf": "npm run build && wrangler pages deploy dist --project-name=artem-portfolio"
+    "preview": "npm run build && wrangler dev",
+    "deploy:cf": "npm run build && wrangler pages deploy dist --project-name=artem-portfolio",
+    "generate-types": "wrangler types",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.5.0",
     "astro": "^6.3.1"
   },
   "devDependencies": {
